@@ -13,7 +13,7 @@ jobs:
         uses: actions/setup-dotnet@v2
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
-      - run: cd .\SpaceBattle\
+      - run: ls -a
       - name: Install dependencies
         run: dotnet restore
       - name: Build

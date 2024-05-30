@@ -15,7 +15,7 @@ jobs:
           dotnet-version: ${{ matrix.dotnet-version }}
       # - run: cd SpaceBattle
       - name: Install dependencies
-        run: dotnet restore .\SpaceBattle\
+        run: dotnet restore ./SpaceBattle/
       - name: Build
         run: dotnet build --no-restore /p:ContinuousIntegrationBuild=true
       - name: Test

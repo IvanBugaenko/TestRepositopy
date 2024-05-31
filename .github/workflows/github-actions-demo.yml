@@ -16,7 +16,7 @@ jobs:
       - name: Install dependencies
         run: dotnet restore ./SpaceBattle/
       - name: test
-        run: echo ${{ github.actor }} | echo ${{ github.triggering_actor }}
+        run: echo ${{ github.actor }} | echo ${{ github.triggering_actor }} | echo ${{github.repositoryUrl}}
       - name: Build
         run: dotnet build ./SpaceBattle/ --no-restore /p:ContinuousIntegrationBuild=true
       - name: Test

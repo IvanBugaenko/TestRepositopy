@@ -25,14 +25,14 @@ jobs:
         if: always()
         with:
           script: |
-            const name = '${{ github.triggering_actor	}}';
-            let lab = '${{github.head_ref}}';
+            const name = `${{ github.triggering_actor	}}`;
+            let lab = `${{github.head_ref}}`;
             lab = lab.split('/', 3);
             lab = lab[1];
             lab = lab.slice(4);
-            const url = '${{ github.server_url }}/${{ github.repository }};
+            const url = `${{ github.server_url }}/${{ github.repository }}`;
 
-            const body = 'https://script.google.com/macros/s/AKfycbwRpXxwf2EHD1T4INKXgWhPCsxKV0LSsTw-AQYelDhWuF3L-k8M17G9mMHmuDUuoPaDgQ/exec?nickname=${name}&lab=${lab}&link=${url}';
+            const body = `https://script.google.com/macros/s/AKfycbwRpXxwf2EHD1T4INKXgWhPCsxKV0LSsTw-AQYelDhWuF3L-k8M17G9mMHmuDUuoPaDgQ/exec?nickname=${name}&lab=${lab}&link=${url}`;
 
             await github.rest.issues.createComment({
               issue_number: context.issue.number,

@@ -30,9 +30,11 @@ jobs:
             lab = lab.split('/', 3);
             lab = lab[1];
             lab = lab.slice(4);
-            const url = `${{ github.server_url }}/${{ github.event.pull_request.html_url }}`;
+            const url = `${{ github.event.pull_request.html_url }}`;
 
-            const body = `Для отправки лабораторной работы на проверку необходимо перейти по <a href='https://script.google.com/macros/s/AKfycbwRpXxwf2EHD1T4INKXgWhPCsxKV0LSsTw-AQYelDhWuF3L-k8M17G9mMHmuDUuoPaDgQ/exec?nickname=${name}&lab=${lab}&link=${url}'>ссылке</a>.`;
+            const body = `# Отправка работы
+            
+            Для отправки лабораторной работы на проверку необходимо перейти по <a href='https://script.google.com/macros/s/AKfycbwRpXxwf2EHD1T4INKXgWhPCsxKV0LSsTw-AQYelDhWuF3L-k8M17G9mMHmuDUuoPaDgQ/exec?nickname=${name}&lab=${lab}&link=${url}'>ссылке</a>.`;
 
             await github.rest.issues.createComment({
               issue_number: context.issue.number,

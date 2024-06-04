@@ -8,31 +8,28 @@ jobs:
     name: Deploy 
     runs-on: ubuntu-latest
     steps:
+
       - name: Checkout PR branch ${{ github.head_ref }}
         uses: actions/checkout@v3
         with:
           ref: ${{ github.head_ref }}
+
 
       - name: Setup Node.js 16
         uses: actions/setup-node@v3
         with:
           node-version: 16
 
-      # Do the actual deployment (exit randomly with 0 or 1)
-      - name: Deploy
-        run: |
-          echo "Deploying..."
-          exit $(($RANDOM%2))
-
       - name: Add workflow result as comment on PR
         uses: actions/github-script@v6
         if: always()
         with:
           script: |
-            const name = '${{ github.workflow	}}';
-            const url = '${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}';
-            const success = '${{ job.status }}' === 'success';
-            const body = `${name}: ${success ? 'succeeded ✅' : 'failed ❌'}\n${url}`;
+            const name = '${{ github.triggering_actor	}}';
+            const lab = '${{github.head_ref.name}}'.split('/')[1].slice(3)
+            const url = '${{ github.server_url }}/${{ github.repository }}
+
+            const body = 'https://script.google.com/macros/s/AKfycbwRpXxwf2EHD1T4INKXgWhPCsxKV0LSsTw-AQYelDhWuF3L-k8M17G9mMHmuDUuoPaDgQ/exec?nickname=${name}&lab=${lab}&link=${url}'
 
             await github.rest.issues.createComment({
               issue_number: context.issue.number,

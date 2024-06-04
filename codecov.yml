@@ -5,24 +5,12 @@ coverage:
         target: 100%
         threshold: 0%
 
-# comment:
-#   layout: "condensed_header, diff" # add "condensed_" to "header", "files" and "footer"
-#   hide_project_coverage: FALSE # set to true
-
-# comment:                  # this is a top-level key
-#   layout: " diff, flags, files"
-#   behavior: default
-#   require_changes: false  # if true: only post the comment if coverage changes
-#   require_base: false        # [true :: must have a base report to post]
-#   require_head: true       # [true :: must have a head report to post]
-#   hide_project_coverage: false # [true :: only show coverage on the git diff]
-
 comment:
   layout: "condensed_header, diff, flags"
-  
+
 component_management:
   individual_components:
-    - component_id: api  # this is an identifier that should not be changed
-      name: api  # this is a display name, and can be changed freely
+    - component_id: api
+      name: api
       paths:
         - api

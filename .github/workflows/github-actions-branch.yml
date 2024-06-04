@@ -16,3 +16,6 @@ jobs:
             develop
             /(feature|fix|hotfix)/lab-\d+/.+/
           errorMessage: "Invalid branch name"
+      - name: Compare workflow file with reference
+        run: |
+          diff -q .github/workflows/github-actions-branch.yml reference/.github/workflows/github-actions-branch.yml

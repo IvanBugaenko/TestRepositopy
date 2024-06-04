@@ -1,0 +1,1 @@
+[![codecov](https://codecov.io/gh/IvanBugaenko/TestRepositopy/graph/badge.svg?token=O9AJ46YH0Q)](https://codecov.io/gh/IvanBugaenko/TestRepositopy)

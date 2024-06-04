@@ -4,6 +4,7 @@ on:
   pull_request:
     branches:
       - "main"
+
 jobs:
   lint:
     runs-on: ubuntu-latest
@@ -13,6 +14,5 @@ jobs:
         with:
           allowed: |
             develop
-            dev
             /(feature|fix|hotfix)/lab-\d+/.+/
           errorMessage: "Invalid branch name"

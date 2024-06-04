@@ -1,9 +1,9 @@
 name: Branchlint
 
-on: 
+on:
   pull_request:
     branches:
-        - 'main'
+      - "main"
 
 jobs:
   lint:
@@ -16,4 +16,4 @@ jobs:
             develop
             dev
             (feature|fix|hotfix)\/lab-\d+\/.+
-          errorMessage: 'Invalid branch name'
+          errorMessage: "Invalid branch name"

@@ -1,0 +1,19 @@
+name: Protect YAML File
+
+on:
+  pull_request:
+    paths: '.github/workflows/github-actions-branch.yml'
+
+jobs:
+  check-yaml:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Check if YAML file was modified
+        run: |
+          if git diff --name-only HEAD^ HEAD | grep -q '.github/workflows/github-actions-branch.yml'; then
+            echo "YAML file was modified. Rejecting the PR."
+            exit 1
+          else
+            echo "YAML file was not modified."
+          fi

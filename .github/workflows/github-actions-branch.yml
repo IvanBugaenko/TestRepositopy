@@ -15,5 +15,5 @@ jobs:
           allowed: |
             develop
             dev
-            (feature|fix|hotfix)\/lab-\d+\/.+
+            (feature|fix|hotfix)/lab-\d+/.+
           errorMessage: "Invalid branch name"

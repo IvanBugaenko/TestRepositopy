@@ -20,7 +20,7 @@ jobs:
         with:
           node-version: 16
 
-      - name: Add workflow result as comment on PR
+      - name: Add comment for submit
         uses: actions/github-script@v6
         if: always()
         with:

@@ -29,6 +29,22 @@ public class VectorTests
     }
 
     [Fact]
+    public void SubstractionGood()
+    {
+        Vector A = new Vector(0, 0, 0, 0);
+        Vector B = new Vector(1, 1, 1, 1);
+        Assert.Equal(new Vector(-1, -1, -1, -1), A - B);
+    }
+
+    [Fact]
+    public void MultiplicationGood()
+    {
+        Vector A = new Vector(1, 1, 1, 2);
+        int alpha = 3;
+        Assert.Equal(new Vector(3, 3, 3, 6), alpha * A);
+    }
+
+    [Fact]
     public void ComparisonBad1()
     {
         Vector A = new Vector(0, 0, 0, 0);

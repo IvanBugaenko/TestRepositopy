@@ -1,36 +1,24 @@
-name: Protect YAML File
+name: Check file changes
 
 on:
   pull_request:
-    paths: '.github/workflows/github-actions-branch.yml'
 
 jobs:
-  check-yaml:
+  check-changes:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
-      - name: Check if YAML file was modified
-        run: |
-          if git diff --name-only HEAD^ HEAD | grep -q '.github/workflows/github-actions-branch.yml'; then
-            echo "YAML file was modified. Rejecting the PR."
-            exit 1
-          else
-            echo "YAML file was not modified."
-          fi
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
 
-# name: Protect YAML Files
-
-# on: pull_request
-
-# jobs:
-#     check-yaml:
-#         runs-on: ubuntu-latest
-#         steps:
-#         - uses: actions/checkout@v3
-#         - name: Prevent file change
-#           uses: xalvarez/prevent-file-change-action@v1
-#           with:
-#             githubToken: ${{ secrets.GITHUB_TOKEN }}
-#             pattern: .*\.yml
-#             trustedAuthors: xalvarez
-#             allowNewFiles: false
+    - name: Check if file has changed
+      run: |
+        if git diff --quiet main..HEAD -- .github\workflows\github-actions-branch.yml; then
+          echo "File github-actions-branch.yml has not changed"
+          exit 0
+        else
+          echo "File github-actions-branch.yml has changed"
+          exit 1
+        fi

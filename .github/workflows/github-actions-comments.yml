@@ -32,7 +32,7 @@ jobs:
 
             const body = `# Отправка работы
 
-            Для отправки лабораторной работы на проверку необходимо перейти по <a href='https://script.google.com/macros/s/AKfycbwRpXxwf2EHD1T4INKXgWhPCsxKV0LSsTw-AQYelDhWuF3L-k8M17G9mMHmuDUuoPaDgQ/exec?nickname=${name}&lab=${lab}&link=${url}'>ссылке</a>.`;
+            Для отправки лабораторной работы на проверку необходимо перейти по <a href='https://script.google.com/macros/s/AKfycbxGtfp3Mk7yPtsgzRoHtDGQImFBWDxQYYzgQ1PcCv9p/dev?nickname=${name}&lab=${lab}&link=${url}'>ссылке</a>.`;
 
             await github.rest.issues.createComment({
               issue_number: context.issue.number,

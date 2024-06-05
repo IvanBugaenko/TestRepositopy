@@ -13,7 +13,7 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
 
-      - name: Setup Node.js 16
+      - name: Setup Node.js 20
         uses: actions/setup-node@v3
         with:
           node-version: 20
